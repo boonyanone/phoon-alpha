@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signal</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <div class="flex h-screen">
+    <div class="w-64 bg-gray-800 text-white p-4">
+      <h2 class="text-lg font-semibold mb-4">Menu</h2>
+      <ul>
+        <li class="mb-2"><a href="index.html" class="hover:underline">Dashboard</a></li>
+        <li class="mb-2"><a href="journal.html" class="hover:underline">Journal</a></li>
+        <li class="mb-2"><a href="signal.html" class="hover:underline font-bold">Signal</a></li>
+      </ul>
+    </div>
+    <div class="flex-1 p-6 overflow-y-auto">
+      <h1 class="text-2xl font-bold mb-4">📈 สัญญาณการเทรดล่าสุด</h1>
+      <div class="bg-white rounded shadow p-4 mb-6">
+        <p class="text-gray-700">📌 กลยุทธ์: <strong>Breakout Buy</strong></p>
+        <p class="text-gray-700">📍 จุดเข้า: <strong>2320</strong> | TP: <strong>2345</strong> | SL: <strong>2305</strong></p>
+        <p class="text-gray-700">🧠 วิเคราะห์: ราคาทะลุแนวต้านพร้อมแรง Volume สูง</p>
+        <div class="mt-4">
+          <form method="POST" action="save_signal.php">
+            <input type="hidden" name="strategy" value="Breakout Buy">
+            <input type="hidden" name="entry" value="2320">
+            <input type="hidden" name="tp" value="2345">
+            <input type="hidden" name="sl" value="2305">
+            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+              ✅ ยืนยันทำตามสัญญาณ
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="bg-white rounded shadow p-4">
+        <h2 class="text-lg font-semibold mb-2">🖼 ตัวอย่างกราฟ (Mockup)</h2>
+        <img src="https://dummyimage.com/600x300/cccccc/000000&text=Chart+Preview" alt="Chart Preview" class="rounded w-full">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

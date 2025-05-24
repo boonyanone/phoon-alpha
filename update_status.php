@@ -1,0 +1,1 @@
+<?php echo 'Updating status...'; ?>

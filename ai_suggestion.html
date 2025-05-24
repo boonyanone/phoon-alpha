@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>📈 AI Strategy Suggestion</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>🤖 กลยุทธ์ที่ AI แนะนำถัดไป</h2>
+    <div id="suggestion-box" class="card">กำลังประมวลผล...</div>
+  </div>
+
+  <script>
+    fetch('journal.json')
+      .then(response => response.json())
+      .then(data => {
+        const strategies = {};
+        data.forEach(item => {
+          if (item.followed) {
+            const strat = item.strategy;
+            if (!strategies[strat]) strategies[strat] = { total: 0, win: 0 };
+            strategies[strat].total++;
+            if (item.result === "TP") strategies[strat].win++;
+          }
+        });
+
+        let best = null;
+        let bestRate = 0;
+        Object.keys(strategies).forEach(s => {
+          const winrate = (strategies[s].win / strategies[s].total) * 100;
+          if (winrate >= bestRate) {
+            best = s;
+            bestRate = winrate;
+          }
+        });
+
+        document.getElementById("suggestion-box").innerHTML = best
+          ? `<b>แนะนำ:</b> ใช้กลยุทธ์ <b>${best}</b> ต่อไป <br> (Win Rate: ${bestRate.toFixed(1)}%)`
+          : "ยังไม่สามารถแนะนำได้ เนื่องจากไม่มีข้อมูลที่ทำตามสัญญาณ";
+      });
+  </script>
+</body>
+</html>
